@@ -8,7 +8,7 @@ from teams import *
 snake_speed = 15
 
 team1_name = "copperhead"
-# team2_name = "beta"
+#team2_name = "beta"
 team2_name = "side_winder"
 
 player1 = getattr(teams, team1_name)
@@ -257,7 +257,7 @@ while running:
     snake2_change_to = "LEFT"
    if event.key == pygame.K_d:
     snake2_change_to = "RIGHT"
-  if event.type == pygame.QUIT: 
+  if event.type == pygame.QUIT:
    running = False
 
  # If two keys pressed simultaneously
@@ -348,41 +348,55 @@ while running:
  if snake1_position[0] < 0 or snake1_position[0] > window_x - 10:
   snake1_score /= 2
   snake1_totscore /= 2
-  next_round()
+  print("snake1 self")
+  # next_round()
+  quit()
  if snake1_position[1] < 0 or snake1_position[1] > window_y - 10:
   snake1_score /= 2
   snake1_totscore /= 2
-  next_round()
-
+  print("snake1 self")
+  # next_round()
+  quit()
  # Game Over conditions
  if snake2_position[0] < 0 or snake2_position[0] > window_x - 10:
   snake2_score /= 2
   snake2_totscore /= 2
-  next_round()
+  print("snake2 self")
+  quit()
+  # next_round()
  if snake2_position[1] < 0 or snake2_position[1] > window_y - 10:
   snake2_score /= 2
   snake2_totscore /= 2
-  next_round()
+  print("snake2 self")
+  quit()
+  # next_round()
 
  # Coliding with own snake body
  for block in snake1_body[1:]:
   if snake1_position[0] == block[0] and snake1_position[1] == block[1]:
    snake1_score /= 2
+   print("snake1 collied others")
    next_round()
  for block in snake2_body[1:]:
   if snake2_position[0] == block[0] and snake2_position[1] == block[1]:
    snake2_score /= 2
-   next_round()
+   print("snake2 collied itself")
+   quit()
+   # next_round()
 
  # Coliding with other snake body
  for block in snake1_body[1:]:
   if snake2_position[0] == block[0] and snake2_position[1] == block[1]:
    snake2_score /= 2
-   next_round()
+   print("snake2 collied others")
+   quit()
+   # next_round()
  for block in snake2_body[1:]:
   if snake1_position[0] == block[0] and snake1_position[1] == block[1]:
    snake1_score /= 2
-   next_round()
+   print("snake1 collied itself")
+   quit()
+   # next_round()
 
  # displaying score countinuously
  show_score(1, white, "times new roman", 20)
